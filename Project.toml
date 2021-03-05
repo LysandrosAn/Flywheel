@@ -1,0 +1,10 @@
+name = "Flywheel"
+uuid = "b8014f7e-8244-434e-bebc-2689a543f2ee"
+authors = ["LysandrosAn <anastasopoulos_l@mail.com>"]
+version = "0.1.0"
+
+[deps]
+DelimitedFiles = "8bb1440f-4735-579b-a4ab-409b98df4dab"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+SymPy = "24249f21-da20-56a4-8eb1-6a02cf4ae2e6"
