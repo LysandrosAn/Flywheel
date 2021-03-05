@@ -12,9 +12,8 @@ include("Flywheel_discrete.jl")
 include("Flywheel_localize.jl")
 
 
-
 function Flywheel_formulation(RotorSpreadsheet)
- t1=println("Creating shape functions")
+ t1=println("Creating element shape functions")
 
  N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)
  K_b,C_b,M_d,G_d =Flywheel_discrete(RotorSpreadsheet)
