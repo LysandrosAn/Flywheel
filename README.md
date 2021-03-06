@@ -7,4 +7,3 @@ Main features:
 * Estimation of resonance frequencies, critical speeds, Campbell diagram
 * Provisionings for time transient numerical simulation
 <img src= "pictures/SampleBlue.PNG" >
-![](pictures/SampleBlue.PNG
