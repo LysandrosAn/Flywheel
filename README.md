@@ -6,4 +6,4 @@ Main features:
 * Calculation of the inertia, gyroscopy, damping and stiffness matrices
 * Estimation of resonance frequencies, critical speeds, Campbell diagram
 * Provisionings for time transient numerical simulation
-![Screenshot](SampleBlue.png)
+![SampleBlue.png](SampleBlue.png)
