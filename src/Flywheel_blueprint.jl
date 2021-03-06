@@ -21,7 +21,7 @@ function Flywheel_blueprint(RotorSpreadsheet)
     else
      Pos=CumLen[Int64(PosNN[i])]-len[1]
     end
-    p=plot!( [Pos], [-ro[i]], markershape = :utriangle, markersize =17, markercolor = :black, label=false)
+    p=plot!( [Pos], [-ro[i]], markershape = :utriangle, markersize =10, markercolor = :black, label=false)
   end
  
   for i=1:NNN
