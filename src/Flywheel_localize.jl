@@ -6,4 +6,3 @@ function Flywheel_localize(k,n,r)
   end
  return Q
 end    # Flywheel_localize(k,n,r)
-

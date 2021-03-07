@@ -72,4 +72,4 @@ function Flywheel_load(RotorSpreadsheet)
 
    return N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,adro,adri,adle,adrho,adma,adjp,adjt,DiscThick,DiscRad
 
-  end    # Flywheel_load()
+end    # Flywheel_load()
