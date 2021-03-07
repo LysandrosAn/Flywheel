@@ -13,8 +13,8 @@ Finite element formulation of rotating equipment in Julia language, featuring 1-
 * Ensure file is located in you current Julia directory
 * `Flywheel_blueprint("Rotor_Sample")` illustrates the blueprint, bearings are depicted as triangles, solid discs as grey elements
 * `M,G,C,K=Flywheel_FEMatrices("Rotor_Sample")` returns the finite element matrices based on your rotor dynamic system
-* `A,B=Flywheel_statespace("Rotor_Sample",500)` generates the state matrix A and input matrix B in the state-space domain, rotational speed of 500rad/s
-* `sort(abs.(imag(eigvals(A)*60/2/pi)))` lists the resonance frequencies of the Jacobian (state matrix A) in rev/min at the chosen rotational speed
+* `A,B=Flywheel_statespace("Rotor_Sample",500)` generates the state matrix A and input matrix B in the state-space domain, at a rotational speed of 500rad/s
+* `sort(abs.(imag(eigvals(A)*60/2/pi)))` lists the resonance frequencies of the Jacobian (state matrix A) in rev/min at the above selected rotational speed
 * 
 
 ## References
