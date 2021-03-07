@@ -4,6 +4,6 @@ Based on "*Linear and Nonlinear Rotordynamics: A Modern Treatment with Applicati
 Main features:
 * Import of custom machinery geometry from file
 * Calculation of the inertia, gyroscopy, damping and stiffness matrices
-* Estimation of resonance frequencies, Campbell diagram
+* Estimation of resonance frequencies
 * Provisionings for time transient numerical simulation
 <img src= "pictures/SampleBlue.PNG" >
