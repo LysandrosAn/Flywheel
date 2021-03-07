@@ -36,9 +36,9 @@ function Flywheel_blueprint(RotorSpreadsheet)
    p=plot!( [Pos-DiscThick[PosNNN[i]]/2, Pos+DiscThick[PosNNN[i]]/2], [+DiscRad[PosNNN[i]], +DiscRad[PosNNN[i]]],color = :black, label=false)
    p=plot!( [Pos-DiscThick[PosNNN[i]]/2, Pos+DiscThick[PosNNN[i]]/2], [+DiscRad[PosNNN[i]], +DiscRad[PosNNN[i]]], fillrange = [-DiscRad[PosNNN[i]] -DiscRad[PosNNN[i]]], colour=:grey, label=false)
   end
-
-  t2=println(string("Overall length: ", sum(len), "m"))
-  t3=println(string("Total mass: ", sum(mu.*len)+0*sum(adma), "kg"))
-  t4=println(string("Total polal moment of inertia:",sum(jp.*len)+sum(adjp)," kgm ^2" ))
+  
+  annotate!(0.0, -maximum(adro)*1.0, text(string("Overall length: ", round(sum(len); digits=2), " m"), :black, :left, 10))
+  annotate!(0.0, -maximum(adro)*1.5, text(string("Total system mass: ", round(sum(mu.*len)+0*sum(adma); digits=2), " kg"), :black, :left, 10))
+  annotate!(0.0, -maximum(adro)*2.0, text(string("Total polal moment of inertia: ", round(sum(jp.*len)+sum(adjp); digits=2), " kg m^2"), :black, :left, 10))
   return p
 end    # Flywheel_blueprint()
