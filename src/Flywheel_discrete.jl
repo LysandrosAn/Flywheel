@@ -1,8 +1,8 @@
 # ======================== Create matrices  ======================== #
 function Flywheel_discrete(RotorSpreadsheet)
-  t1=println("Creating finite elment method matrices")
+  t1=println("Creating finite elment method matrices...")
 
- N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)
+  N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,adro,adri,adle,adrho,adma,adjp,adjt,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)
  
  # Allocate arrays
  K_b=  zeros(Float64,4,4,NN);

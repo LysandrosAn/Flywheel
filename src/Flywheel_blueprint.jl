@@ -1,7 +1,7 @@
 # ======================== Plot blueprint ======================== #
 function Flywheel_blueprint(RotorSpreadsheet)
-  t1=println("Generating blueprint of system")
-  N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)
+  t1=println("Generating blueprint of system...")
+  N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,adro,adri,adle,adrho,adma,adjp,adjt,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)
   SumL=sum(len);
   Pos=0.0
   p=0
@@ -30,13 +30,17 @@ function Flywheel_blueprint(RotorSpreadsheet)
     else
      Pos=CumLen[(PosNNN[i]-1)]
     end
-    p=plot!( [Pos-DiscThick[PosNNN[i]]/2, Pos-DiscThick[PosNNN[i]]/2], [-DiscRad[PosNNN[i]]/2, +DiscRad[PosNNN[i]]/2],color = :black, label=false)
-    p=plot!( [Pos+DiscThick[PosNNN[i]]/2, Pos+DiscThick[PosNNN[i]]/2], [-DiscRad[PosNNN[i]]/2, +DiscRad[PosNNN[i]]/2],color = :black, label=false)
-    p=plot!( [Pos-DiscThick[PosNNN[i]]/2, Pos+DiscThick[PosNNN[i]]/2], [-DiscRad[PosNNN[i]]/2, -DiscRad[PosNNN[i]]/2],color = :black, label=false)
-    p=plot!( [Pos-DiscThick[PosNNN[i]]/2, Pos+DiscThick[PosNNN[i]]/2], [+DiscRad[PosNNN[i]]/2, +DiscRad[PosNNN[i]]/2],color = :black, label=false)
-    p=plot!( [Pos-DiscThick[PosNNN[i]]/2, Pos+DiscThick[PosNNN[i]]/2], [+DiscRad[PosNNN[i]]/2, +DiscRad[PosNNN[i]]/2], fillrange = [-DiscRad[PosNNN[i]]/2 -DiscRad[PosNNN[i]]/2], colour=:grey, label=false)
+    p=plot!( [Pos-DiscThick[PosNNN[i]]/2, Pos-DiscThick[PosNNN[i]]/2], [-DiscRad[PosNNN[i]], +DiscRad[PosNNN[i]]],color = :black, label=false)
+    p=plot!( [Pos+DiscThick[PosNNN[i]]/2, Pos+DiscThick[PosNNN[i]]/2], [-DiscRad[PosNNN[i]], +DiscRad[PosNNN[i]]],color = :black, label=false)
+    p=plot!( [Pos-DiscThick[PosNNN[i]]/2, Pos+DiscThick[PosNNN[i]]/2], [-DiscRad[PosNNN[i]], -DiscRad[PosNNN[i]]],color = :black, label=false)
+    p=plot!( [Pos-DiscThick[PosNNN[i]]/2, Pos+DiscThick[PosNNN[i]]/2], [+DiscRad[PosNNN[i]], +DiscRad[PosNNN[i]]],color = :black, label=false)
+    p=plot!( [Pos-DiscThick[PosNNN[i]]/2, Pos+DiscThick[PosNNN[i]]/2], [+DiscRad[PosNNN[i]], +DiscRad[PosNNN[i]]], fillrange = [-DiscRad[PosNNN[i]] -DiscRad[PosNNN[i]]], colour=:grey, label=false)
   end
- 
+  t2=println(string("Overall length: ", sum(len), "m"))
+  t3=println(string("Total mass: ", sum(mu.*len)+adma[1], "kg"))
+  t4=println(string("Total polal moment of inertia:",sum(jp.*len)+sum(adjp)," kgm ^2" ))
+
+
   return p
  end    # Flywheel_blueprint()
  

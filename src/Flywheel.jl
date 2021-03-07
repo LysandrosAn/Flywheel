@@ -1,6 +1,6 @@
 # ======================== 1-D Finite Element Rotating Machinery Code ======================== #
 module Flywheel
-export Flywheel_blueprint, Flywheel_formulation
+export Flywheel_blueprint, Flywheel_FEMatrices
 
 using LinearAlgebra
 using Plots 
@@ -10,28 +10,27 @@ include("Flywheel_load.jl")
 include("Flywheel_blueprint.jl")
 include("Flywheel_discrete.jl")
 include("Flywheel_localize.jl")
+include("Flywheel_statespace.jl")
 
-
-function Flywheel_formulation(RotorSpreadsheet)
+function Flywheel_FEMatrices(RotorSpreadsheet)
  t1=println("Generating element shape functions")
 
- N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)
+ N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,adro,adri,adle,adrho,adma,adjp,adjt,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)
  K_b,C_b,M_d,G_d =Flywheel_discrete(RotorSpreadsheet)
  
  # Allocate arrays
- Kbend_s= zeros(Float64,8,8,N)  
- MassT_s= zeros(Float64,8,8,N)
- MassR_s= zeros(Float64,8,8,N)
- Mass_s= zeros(Float64,8,8,N)
- Na_s= zeros(Float64,8,8,N)
- Nb_s= zeros(Float64,8,8,N)
- N_s= zeros(Float64,8,8,N)
- Gyro_s= zeros(Float64,8,8,N)
- Kstiff_b= zeros(Float64,4,4,N)
- Cdamp_b= zeros(Float64,4,4,N)
- Mass_d= zeros(Float64,4,4,N)
- Gyro_d= zeros(Float64,4,4,N)
- Om=120.0
+ Kbend_s= zeros(Float64,8,8, N)  
+ MassT_s= zeros(Float64,8,8, N)
+ MassR_s= zeros(Float64,8,8, N)
+ Mass_s= zeros(Float64,8,8,  N)
+ Na_s= zeros(Float64,8,8,    N)
+ Nb_s= zeros(Float64,8,8,    N)
+ N_s= zeros(Float64,8,8,     N)
+ Gyro_s= zeros(Float64,8,8,  N)
+ Kstiff_b= zeros(Float64,4,4,NN)
+ Ddamp_b= zeros(Float64,4,4, NN)
+ Mass_d= zeros(Float64,4,4,  NNN)
+ Gyro_d= zeros(Float64,4,4,  NNN)
 
   # Shaft element stiffness, mass and gyroscopy matrix
   s = Sym("s")
@@ -59,13 +58,13 @@ function Flywheel_formulation(RotorSpreadsheet)
 
   Mass_s[:,:,i]=  MassT_s[:,:,i]+MassR_s[:,:,i]  
   N_s[:,:,i]=Na_s[:,:,i]-Nb_s[:,:,i]
-  Gyro_s[:,:,i]=   1/2*Om*(N_s[:,:,i]-N_s[:,:,i]') 
+  Gyro_s[:,:,i]=   1/2*(N_s[:,:,i]-N_s[:,:,i]') 
  end
   
   # Bearing element stiffness matrix
   for ii=1:NN
     Kstiff_b[:,:,ii]= K_b[:,:,ii]
-    Cdamp_b[:,:,ii]= 0*K_b[:,:,ii]
+    Ddamp_b[:,:,ii]= 0*K_b[:,:,ii]
   end
 
    # Disc element mass and gyroscopic matrix
@@ -82,8 +81,8 @@ function Flywheel_formulation(RotorSpreadsheet)
   G= zeros(Float64,4*(N+1),4*(N+1))
   GS= zeros(Float64,4*(N+1),4*(N+1))
   GD= zeros(Float64,4*(N+1),4*(N+1))
-  C= zeros(Float64,4*(N+1),4*(N+1))
-  CB= zeros(Float64,4*(N+1),4*(N+1))
+  D= zeros(Float64,4*(N+1),4*(N+1))
+  DB= zeros(Float64,4*(N+1),4*(N+1))
   K= zeros(Float64,4*(N+1),4*(N+1))
   KS= zeros(Float64,4*(N+1),4*(N+1))
   KB= zeros(Float64,4*(N+1),4*(N+1))
@@ -112,7 +111,7 @@ function Flywheel_formulation(RotorSpreadsheet)
   # Compose overall bearings matrices
   for ii=1:NN
     KB=KB+Qb[:,:,ii]'*Kstiff_b[:,:,ii]*Qb[:,:,ii]
-    CB=CB+Qb[:,:,ii]'*Cdamp_b[:,:,ii]*Qb[:,:,ii]
+    DB=DB+Qb[:,:,ii]'*Ddamp_b[:,:,ii]*Qb[:,:,ii]
   end
 
 
@@ -130,10 +129,11 @@ function Flywheel_formulation(RotorSpreadsheet)
   # System matrices
   M=MS+MD  # Mass matrix: sum of "S"haft and "D"isc contributions
   G=GS+GD  # Gyroscopy matrix: sum of "S"haft and "D"isc contributions
-  C=CB     # Damping matrix: "B"earing contribution only (linear bearings, connected to ground are deactivated, since pedestals are required)
+  D=DB     # Damping matrix: "B"earing contribution only (linear bearings, connected to ground are deactivated, since pedestals are required)
   K=KS+KB  # Stiffness matrix: sum of "S"haft and "B"earing contributions (linear bearings, connected to ground are deactivated, since pedestals are required)
   
-  return eigvals(K)
-end    # Flywheel_formulation()
+#  return M,G,C,K
+  return Mass_s[:,:,1]
+end    # Flywheel_FEMatrices()
 
 end # Module Flywheel

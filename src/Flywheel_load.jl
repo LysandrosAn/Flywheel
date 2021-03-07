@@ -1,6 +1,5 @@
 # ======================== Load rotor file ======================== #
 function Flywheel_load(RotorSpreadsheet)
-  t1=println("Loading rotor file...")
    ImportFile=readdlm(string(RotorSpreadsheet,".txt"), '\t', Float64, '\n', header=true)
    ImportHeaders=ImportFile[2];
    ImportData=ImportFile[1];
@@ -57,5 +56,20 @@ function Flywheel_load(RotorSpreadsheet)
    end      
    NNN=length(PosNNN)
   
-   return N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,DiscThick,DiscRad
+   adro=  zeros(Float64,NNN);adri=  zeros(Float64,NNN);
+   adle=  zeros(Float64,NNN);adrho= zeros(Float64,NNN);
+   adma=  zeros(Float64,NNN);adjp=  zeros(Float64,NNN);  adjt=  zeros(Float64,NNN);
+   M_d=  zeros(Float64,4,4,NNN); G_d=  zeros(Float64,4,4,NNN);
+   for iii=1:NNN
+    adro[iii]=DiscRad[PosNNN[iii]];   # Disc outer radius
+    adri[iii]=0.0;                    # Disc inner radius
+    adle[iii]=DiscThick[PosNNN[iii]]; # Disc axial length
+    adrho[iii]=7840.0;                # Disc material density
+    adma[iii]=pi * (adro[iii]^2-adri[iii]^2)  * adle[iii]*adrho[iii]; # Disc mass
+    adjp[iii]=adma[iii]*(adro[iii]^2+adri[iii]^2)/2;                  # Disc polar moment of inertia
+    adjt[iii]=adjp[iii]/2+adma[iii]*adle[iii]^2/12;                   # Disc transversal moment of inertia
+   end
+
+   return N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,adro,adri,adle,adrho,adma,adjp,adjt,DiscThick,DiscRad
+
   end    # Flywheel_load()
