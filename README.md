@@ -2,7 +2,7 @@
 Finite element formulation of rotating equipment in Julia language, featuring 1-D  Euler-Bernoulli beam shaft segments, gyroscoping coupling and linear bearing impedance.\
 <img src= "pictures/SampleBlue.PNG"  width="400">
 
-## Main features:
+## Features:
 * Import of custom machinery geometry from file
 * Calculation of the inertia, gyroscopy, damping and stiffness matrices
 * Estimation of resonance frequencies and deformation due to gravity
