@@ -13,6 +13,7 @@ Finite element formulation of rotating equipment in Julia language, featuring 1-
 * Ensure file is located in you current Julia directory
 * Run `Flywheel_blueprint("Rotor_Sample")` to see blueprint, bearings are depicted as triangles, solid discs as grey elements
 * Run `M,G,C,K=Flywheel_FEMatrices("Rotor_Sample")` to generate the finite element matrices based on your rotor dynamic system
+* Run `A,B=Flywheel_statespace("Rotor_Sample")` to generate the state matrix A and input matrix B in the state-space domain
 
 ## References
 * *Linear and Nonlinear Rotordynamics: A Modern Treatment with Applications, Second Edition* by Y. Ishida and T. Yamamoto (ISBN 978-3-527-40942-6)
