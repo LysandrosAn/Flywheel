@@ -4,7 +4,7 @@ Finite element method (FEM) formulation of custom rotating equipment in Julia la
 
 ## Features:
 * Import of machinery geometry from file
-* Export of the inertia, gyroscopy, damping and stiffness matrices
+* Export of inertia, gyroscopy, damping & stiffness matrices
 * Calculation of resonance frequencies and deformation due to gravity
 * Run-up time-transient numerical simulation
 
