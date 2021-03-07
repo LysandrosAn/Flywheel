@@ -1,5 +1,5 @@
 # Flywheel
-Finite element simulation of rotating equipment in Julia language, featuring 1-D Euler beam shaft segments and linear bearing impedance.\
+Finite element simulation of rotating equipment in Julia language, featuring 1-D Euler beam shaft segments and linear bearing impedance.
 
 ## Main features:
 * Import of custom machinery geometry from file
@@ -19,7 +19,7 @@ Finite element simulation of rotating equipment in Julia language, featuring 1-D
 * *Dynamics of Rotating Systems*" by Giancarlo Genta (ISBN 978-0-387-28687-7)
 
 ## License
-Eclipse Public License
+Eclipse Public License 2.0
 
 ## Author
 Lysandros Anastasopoulos
