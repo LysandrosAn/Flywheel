@@ -1,9 +1,9 @@
-# ======================== Create matrices  ======================== #
+# ======================== Create state space system  ======================== #
 function Flywheel_statespace(RotorSpreadsheet,Omega)
   t1=println("Creating state-space dynamic matrix...")
 
   N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,adro,adri,adle,adrho,adma,adjp,adjt,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)
-  M,G,D,K =Flywheel_FEMatrices(RotorSpreadsheet)
+  M,G,D,K =Flywheel_fematrices(RotorSpreadsheet)
 
  # Allocate arrays
  DynMa=  zeros(Float64,8*(N+1),8*(N+1));
