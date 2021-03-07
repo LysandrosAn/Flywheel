@@ -15,7 +15,7 @@ Finite element method (FEM) formulation of rotating equipment in Julia language,
 * `M,G,C,K=Flywheel_fematrices("Rotor_Sample")` returns the finite element matrices based on your rotor dynamic system
 * `A,B=Flywheel_statespace("Rotor_Sample",800)` generates the state matrix A and input matrix B in the state-space domain, at a rotational speed of 800rev/min
 * `sort(abs.(imag(eigvals(A)*60/2/pi)))` lists the resonance frequencies of the Jacobian (state matrix A) in rev/min at the above selected rotational speed
-* GravForce=Flywheel_gravity("Rotor_Ishida",9.806) in order to obtain the vector of the nodal forces due to the gravity load
+* `GravForce=Flywheel_gravity("Rotor_Ishida",9.806)` in order to obtain the vector of the nodal forces due to a gravitational acceleration of 9.806m/s^2
 
 ## References
 * *Linear and Nonlinear Rotordynamics: A Modern Treatment with Applications, Second Edition* by Y. Ishida and T. Yamamoto (ISBN 978-3-527-40942-6)
