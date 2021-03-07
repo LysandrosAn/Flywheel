@@ -38,7 +38,7 @@ function Flywheel_blueprint(RotorSpreadsheet)
   end
 
   t2=println(string("Overall length: ", sum(len), "m"))
-  t3=println(string("Total mass: ", sum(mu.*len)+adma[1], "kg"))
+  t3=println(string("Total mass: ", sum(mu.*len)+0*sum(adma), "kg"))
   t4=println(string("Total polal moment of inertia:",sum(jp.*len)+sum(adjp)," kgm ^2" ))
   return p
 end    # Flywheel_blueprint()
