@@ -20,7 +20,7 @@ function Flywheel_load(RotorSpreadsheet)
      ro[i]=ImportData[i,3];                   # Outer radius of finite element
      ri[i]=ImportData[i,4];                   # Inner radius of finite element
      rho[i]=ImportData[i,5];                  # Material density
-     E[i]=  ImportData[i,6]*1e12;             # Young modulus
+     E[i]=  ImportData[i,6]*1e9;              # Young modulus
      nu[i]= ImportData[i,7];                  # Poisson ratio
      BearX[i]=  ImportData[i,9];              # Bearing hor. stiffness
      BearY[i]=  ImportData[i,10];             # Bearing ver. stiffness

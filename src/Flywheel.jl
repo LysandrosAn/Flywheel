@@ -1,6 +1,6 @@
 # ======================== 1-D Finite Element Rotating Machinery Code ======================== #
 module Flywheel
-export Flywheel_blueprint, Flywheel_FEMatrices
+export Flywheel_blueprint, Flywheel_FEMatrices, Flywheel_statespace
 
 using LinearAlgebra
 using Plots 
@@ -11,9 +11,10 @@ include("Flywheel_blueprint.jl")
 include("Flywheel_discrete.jl")
 include("Flywheel_localize.jl")
 include("Flywheel_statespace.jl")
+include("Flywheel_rearrange.jl")
 
 function Flywheel_FEMatrices(RotorSpreadsheet)
- t1=println("Generating element shape functions")
+ t1=println("Generating element shape functions...")
 
  N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,adro,adri,adle,adrho,adma,adjp,adjt,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)
  K_b,C_b,M_d,G_d =Flywheel_discrete(RotorSpreadsheet)
@@ -34,7 +35,7 @@ function Flywheel_FEMatrices(RotorSpreadsheet)
 
   # Shaft element stiffness, mass and gyroscopy matrix
   s = Sym("s")
-  for i=1:1
+  for i=1:N
     l=len[i]
     psi1= 1-3*(s/l)^2+2*(s/l)^3; psi1p= -6*(s/l^2)+6*(s^2/l^3); psi1pp= -6/l^2+12*s/l^3;
     psi2= s*(1-2*(s/l)+(s/l)^2); psi2p= 1-4*(s/l)+3*(s^2/l^2);  psi2pp= -4/l+6*s/l^2;
@@ -94,7 +95,6 @@ function Flywheel_FEMatrices(RotorSpreadsheet)
   for elem=1:N
    Qs[:,:,elem]=Flywheel_localize(elem,N,8)
   end
-
   # Compose overall shaft element matrices
   for i=1:N
     MS=MS+Qs[:,:,i]'*Mass_s[:,:,i]*Qs[:,:,i]
@@ -107,7 +107,6 @@ function Flywheel_FEMatrices(RotorSpreadsheet)
   for bear=1:NN
     Qb[:,:,bear]=Flywheel_localize(PosNN[bear],N,4)
   end
-  
   # Compose overall bearings matrices
   for ii=1:NN
     KB=KB+Qb[:,:,ii]'*Kstiff_b[:,:,ii]*Qb[:,:,ii]
@@ -119,12 +118,12 @@ function Flywheel_FEMatrices(RotorSpreadsheet)
   for disc=1:NNN
     Qd[:,:,disc]=Flywheel_localize(PosNNN[disc],N,4)
   end
-
   # Compose overall disc matrices
   for iii=1:NNN
     MD=MD+Qd[:,:,iii]'*Mass_d[:,:,iii]*Qd[:,:,iii]
     GD=GD+Qd[:,:,iii]'*Gyro_d[:,:,iii]*Qd[:,:,iii]
   end
+
 
   # System matrices
   M=MS+MD  # Mass matrix: sum of "S"haft and "D"isc contributions
@@ -132,8 +131,8 @@ function Flywheel_FEMatrices(RotorSpreadsheet)
   D=DB     # Damping matrix: "B"earing contribution only (linear bearings, connected to ground are deactivated, since pedestals are required)
   K=KS+KB  # Stiffness matrix: sum of "S"haft and "B"earing contributions (linear bearings, connected to ground are deactivated, since pedestals are required)
   
-#  return M,G,C,K
-  return Mass_s[:,:,1]
+  return M,G,D,K
+#return eigvals(M == transpose(M))
 end    # Flywheel_FEMatrices()
 
 end # Module Flywheel
