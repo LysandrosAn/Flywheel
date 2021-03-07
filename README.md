@@ -5,7 +5,7 @@ Finite element formulation of rotating equipment in Julia language, featuring 1-
 ## Main features:
 * Import of custom machinery geometry from file
 * Calculation of the inertia, gyroscopy, damping and stiffness matrices
-* Estimation of resonance frequencies
+* Estimation of resonance frequencies and deformation due to gravity
 * Provisionings for time transient numerical simulation
 
 ## Usage
