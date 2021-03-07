@@ -1,18 +1,18 @@
 # Flywheel
-Finite element formulation of rotating equipment in Julia language, featuring 1-D  Euler-Bernoulli beam shaft segments, gyroscoping coupling and linear bearing impedance.\
-<img src= "pictures/SampleBlue.PNG"  width="400">
+Finite element method (FEM) formulation of rotating equipment in Julia language, featuring 1-D  Euler-Bernoulli beam shaft segments, gyroscoping coupling and linear bearing impedance.\
+<img src= "pictures/SampleBlue.PNG"  width="450">
 
-## Main features:
+## Features:
 * Import of custom machinery geometry from file
-* Calculation of the inertia, gyroscopy, damping and stiffness matrices
-* Estimation of resonance frequencies and deformation due to gravity
-* Provisionings for time transient numerical simulation
+* Export of inertia, gyroscopy, damping & stiffness matrices
+* Calculation of resonance frequencies and deformation due to gravity
+* Run-up time-transient numerical simulation
 
 ## Usage
 * Edit the text file "Rotor_Sample.txt" that comes with the installation, cf. headers for the meaning of each column
 * Ensure file is located in you current Julia directory
 * `Flywheel_blueprint("Rotor_Sample")` illustrates the blueprint, bearings are depicted as triangles, solid discs as grey elements
-* `M,G,C,K=Flywheel_FEMatrices("Rotor_Sample")` returns the finite element matrices based on your rotor dynamic system
+* `M,G,C,K=Flywheel_fematrices("Rotor_Sample")` returns the finite element matrices based on your rotor dynamic system
 * `A,B=Flywheel_statespace("Rotor_Sample",800)` generates the state matrix A and input matrix B in the state-space domain, at a rotational speed of 800rev/min
 * `sort(abs.(imag(eigvals(A)*60/2/pi)))` lists the resonance frequencies of the Jacobian (state matrix A) in rev/min at the above selected rotational speed
 
