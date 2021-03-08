@@ -38,7 +38,7 @@ function Flywheel_blueprint(RotorSpreadsheet)
   end
   
   annotate!(0.0, -maximum(adro)*1.0, text(string("Overall length: ", round(sum(len); digits=2), " m"), :black, :left, 10))
-  annotate!(0.0, -maximum(adro)*1.5, text(string("Total system mass: ", round(sum(mu.*len)+0*sum(adma); digits=2), " kg"), :black, :left, 10))
+  annotate!(0.0, -maximum(adro)*1.5, text(string("Total system mass: ", round(sum(mu.*len)+sum(adma); digits=2), " kg"), :black, :left, 10))
   annotate!(0.0, -maximum(adro)*2.0, text(string("Total polal moment of inertia: ", round(sum(jp.*len)+sum(adjp); digits=2), " kg m^2"), :black, :left, 10))
   return p
 end    # Flywheel_blueprint()
