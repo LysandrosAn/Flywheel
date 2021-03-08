@@ -1,5 +1,5 @@
 # Flywheel
-Finite element method (FEM) formulation of rotating equipment in Julia language, featuring 1-D  Euler-Bernoulli beam shaft segments, gyroscoping coupling and linear bearing impedance.\
+Finite element method (FEM) formulation of rotating equipment in Julia language, featuring structural dynamics with 1-D  Euler-Bernoulli beam shaft segments, gyroscoping coupling and linear bearing impedance.\
 <img src= "pictures/SampleBlue.PNG"  width="600">
 
 ## Features:
@@ -7,6 +7,11 @@ Finite element method (FEM) formulation of rotating equipment in Julia language,
 * Export of inertia, gyroscopy, damping & stiffness matrices
 * Calculation of resonance frequencies and deformation due to gravity
 * Run-up time-transient numerical simulation
+
+## Installation
+* Fetch the code locally, place it into your directory
+* In Julia, run as: `(v1.5) pkg> add "C:\Users\myusername\.julia\dev\Flywheel"`
+* Then add the package with `using Flywheel`
 
 ## Usage
 * Edit the text file "Rotor_Sample.txt" that comes with the installation, cf. headers for the meaning of each column
