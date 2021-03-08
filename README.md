@@ -1,6 +1,6 @@
 # Flywheel
 Finite element method (FEM) formulation of rotating equipment in Julia language, featuring 1-D  Euler-Bernoulli beam shaft segments, gyroscoping coupling and linear bearing impedance.\
-<img src= "pictures/SampleBlue.PNG"  width="450">
+<img src= "pictures/SampleBlue.PNG"  width="600">
 
 ## Features:
 * Import of custom machinery geometry from file
