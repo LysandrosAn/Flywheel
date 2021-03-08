@@ -28,8 +28,7 @@ function Flywheel_gravity(RotorSpreadsheet, gi,K)
   
    p=0
    #plot()
-   #p=plot!([0.0; cumsum(len)], gravFy[nodes_trX] )
-   p=plot!([0.0; cumsum(len)], 10000*gravFy[nodes_trY] )
+   p=plot!([0.0; cumsum(len)], 20000*gravFy[nodes_trY] )
 
    return p
 

@@ -19,9 +19,9 @@ function Flywheel_blueprint(RotorSpreadsheet)
    if PosNN[i]>N
     Pos=CumLen[Int64[N]]
    else
-    Pos=CumLen[Int64(PosNN[i])]-len[1]
+    Pos=CumLen[Int64(PosNN[i])]-1*len[PosNN[i]]
    end
-   p=plot!( [Pos], [-ro[i]*4], markershape = :utriangle, markersize =14, markercolor = :black, label=false)
+   p=plot!( [Pos], [-ro[i]], markershape = :utriangle, markersize =10, markercolor = :black, label=false)
   end 
 
   for i=1:NNN
@@ -37,8 +37,8 @@ function Flywheel_blueprint(RotorSpreadsheet)
    p=plot!( [Pos-DiscThick[PosNNN[i]]/2, Pos+DiscThick[PosNNN[i]]/2], [+DiscRad[PosNNN[i]], +DiscRad[PosNNN[i]]], fillrange = [-DiscRad[PosNNN[i]] -DiscRad[PosNNN[i]]], colour=:grey, label=false)
   end
   
-  annotate!(0.0, -maximum(adro)*1.0, text(string("Overall length: ", round(sum(len); digits=2), " m"), :black, :left, 10))
-  annotate!(0.0, -maximum(adro)*1.5, text(string("Total system mass: ", round(sum(mu.*len)+sum(adma); digits=2), " kg"), :black, :left, 10))
-  annotate!(0.0, -maximum(adro)*2.0, text(string("Total polal moment of inertia: ", round(sum(jp.*len)+sum(adjp); digits=2), " kg m^2"), :black, :left, 10))
+  annotate!(0.0, -maximum(adro)*0.8, text(string("Overall length: ", round(sum(len); digits=2), " m"), :black, :left, 8))
+  annotate!(0.0, -maximum(adro)*1.2, text(string("Total system mass: ", round(sum(mu.*len)+sum(adma); digits=2), " kg"), :black, :left, 8))
+  annotate!(0.0, -maximum(adro)*1.6, text(string("Total polal moment of inertia: ", round(sum(jp.*len)+sum(adjp); digits=2), " kg m^2"), :black, :left, 8))
   return p
 end    # Flywheel_blueprint()
