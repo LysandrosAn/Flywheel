@@ -26,10 +26,11 @@ function Flywheel_gravity(RotorSpreadsheet, gi,K)
     nodes_trY[ii]=2*(ii-1)+1+2*(N+1)
    end
   
+   ScaleFac=maximum(DiscRad)/maximum(abs.(gravFy[nodes_trY]))
    p=0
    #plot()
-   p=plot!([0.0; cumsum(len)], 20000*gravFy[nodes_trY] )
-
+   p=plot!([0.0; cumsum(len)], ScaleFac*gravFy[nodes_trY], label="Deformation due to gravity",  linewidth = 1.75, linecolor = :blue)
+   p=plot!([0.0; cumsum(len)], ScaleFac*gravFy[nodes_trY], marker = ([:circle :d], 4, 0.4, Plots.stroke(2, :gray)), legend=:false)
    return p
 
  end    # Flywheel_gravity()
