@@ -8,6 +8,11 @@ Finite element method (FEM) formulation of rotating equipment in Julia language,
 * Calculation of resonance frequencies and deformation due to gravity
 * Run-up time-transient numerical simulation
 
+## Installation
+* Fetch the code and place it into you directory
+* In Julia, run: `(v1.5) pkg> add "C:\Users\Lysandros An\.julia\dev\Flywheel"`
+* Then add the package with `using Flywheel`
+
 ## Usage
 * Edit the text file "Rotor_Sample.txt" that comes with the installation, cf. headers for the meaning of each column
 * Ensure file is located in you current Julia directory
