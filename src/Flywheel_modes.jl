@@ -1,25 +1,32 @@
 # ======================== Visualize vibration modes  ======================== #
-function Flywheel_modes(A)
+function Flywheel_modes(RotorSpreadsheet,AA)
   t1=println("Showing vibration mode...")
-  N=Int64(size(A)[1]/8-1)
-  dDynMa=eigvals(A)
-  vDynMa=eigvecs(A)
+  N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,adro,adri,adle,adrho,adma,adjp,adjt,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)
+  nodes_trX= zeros(Int64,N+1,1)
+  nodes_trY= zeros(Int64,N+1,1)
+  
+  dDynMa=eigvals(AA)
+  vDynMa=eigvecs(AA)
 
+  d=(abs.(imag(dDynMa)))
+  dind=sortperm(abs.(imag(dDynMa)))
 
-  #  d=sort(abs.(imag(dDynMa)))
-  # for i=1:8*(N+1)
-  #  println(string("Eigenvalue ",i,", ",((d[i])*60/(2*pi)), "rev/min, in rad/s:"))
-  # end
-  # dind=sortperm(abs.(imag(dDynMa)))
-  # for i=1:8*(N+1)
-  #  println(string("Sort:",dind[i]))
-  # end
+  println(string("1st Eigenvalue:",d[dind[1]]))
+  println(string("2nd Eigenvalue:",d[dind[2]]))
+  println(string("3rd Eigenvalue:",d[dind[3]]))
+  println(string("4th Eigenvalue:",d[dind[4]]))
 
-#   ScaleFac=maximum(DiscRad)/maximum(abs.(gravFy[nodes_trY]))
-   p=0
-   #plot()
-#   p=plot!([0.0; cumsum(len)], ScaleFac*gravFy[nodes_trY], label="Deformation due to gravity",  linewidth = 1.75, linecolor = :blue)
-#   p=plot!([0.0; cumsum(len)], ScaleFac*gravFy[nodes_trY], marker = ([:circle :d], 4, 0.4, Plots.stroke(2, :gray)), legend=:false)
+  for ii=1:N+1
+   nodes_trX[ii]=2*(ii-1)+1
+   nodes_trY[ii]=2*(ii-1)+1+2*(N+1)
+  end
+
+  mode_1=vDynMa[:,dind[1]]
+  println(imag.(mode_1))
+  p=0
+#  plot()
+  p=plot!([0.0; cumsum(len)], 1e4*real.(mode_1[nodes_trY]), label="Modal shape, real",       linewidth = 1.75)
+  p=plot!([0.0; cumsum(len)], 1e4*imag.(mode_1[nodes_trY]), label="Modal shape, imaginary",  linewidth = 1.75)
    return p
 
 end    # Flywheel_modes()
