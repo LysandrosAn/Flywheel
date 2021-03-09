@@ -1,6 +1,6 @@
 # ======================== 1-D Finite Element Rotating Machinery Code ======================== #
 module Flywheel
- export Flywheel_blueprint, Flywheel_fematrices, Flywheel_statespace, Flywheel_gravity, Flywheel_waterfall
+ export Flywheel_blueprint, Flywheel_fematrices, Flywheel_statespace, Flywheel_gravity, Flywheel_waterfall, Flywheel_modes
  using LinearAlgebra
  using Plots 
  using DelimitedFiles
@@ -14,4 +14,5 @@ module Flywheel
  include("Flywheel_fematrices.jl")
  include("Flywheel_gravity.jl")
  include("Flywheel_waterfall.jl")
+ include("Flywheel_modes.jl")
 end # Module Flywheel
