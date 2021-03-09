@@ -5,11 +5,11 @@ function Flywheel_modes(A)
   dDynMa=eigvals(A)
   vDynMa=eigvecs(A)
 
-  #d=sort(abs.(imag(dDynMa)))
+  d=sort(abs.(imag(dDynMa)))
   #for i=1:8*(N+1)
   # println(string("Eigenvalue ",i,", ",((d[i])*60/(2*pi)), "rev/min, in rad/s:"))
   #end
-  #dind=sortperm(abs.(imag(dDynMa))
+  dind=sortperm(abs.(imag(dDynMa))
   #for i=1:8*(N+1)
   #  println(string("Eigenvalue ",dind[i]))
   #end
