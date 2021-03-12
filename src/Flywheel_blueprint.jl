@@ -10,6 +10,8 @@ function Flywheel_blueprint(RotorSpreadsheet)
    p=plot!( [Pos, Pos], [-ro[i], +ro[i]],      linewidth= 2.0, color= :grey, label= false)
    p=plot!( [Pos, Pos+len[i]],+[ro[i], ro[i]], linewidth= 2.0, color= :grey, label= false)
    p=plot!( [Pos, Pos+len[i]],-[ro[i], ro[i]], linewidth= 2.0, color= :grey, label= false)
+   p=plot!( [Pos, Pos+len[i]],+[ro[i], ro[i]], fillrange =-[ro[i], ro[i]], colour=:lightsteelblue2, label=false)
+
    Pos=len[i]+Pos;
   end
 
@@ -21,7 +23,7 @@ function Flywheel_blueprint(RotorSpreadsheet)
    else
     Pos=CumLen[Int64(PosNN[i])]-1*len[PosNN[i]]
    end
-   p=plot!( [Pos], [-ro[i]], markershape = :utriangle, markersize =10, markercolor = :black, label=false)
+   p=plot!( [Pos], [-ro[i]], markershape = :utriangle, markersize =12, markercolor = :black, label=false)
   end 
 
   for i=1:NNN
