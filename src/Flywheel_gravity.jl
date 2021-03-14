@@ -18,7 +18,7 @@ function Flywheel_gravity(RotorSpreadsheet, gi,K)
    end
    
    gravFy=inv(K)*GravForce
-  
+
    nodes_trX= zeros(Int64,N+1,1)
    nodes_trY= zeros(Int64,N+1,1)
    
@@ -26,12 +26,13 @@ function Flywheel_gravity(RotorSpreadsheet, gi,K)
     nodes_trX[ii]=2*(ii-1)+1
     nodes_trY[ii]=2*(ii-1)+1+2*(N+1)
    end
-  
+
    ScaleFac=1/2*maximum(DiscRad)/maximum(abs.(gravFy[nodes_trY]))
    p=0
    #plot()
    #p=plot!([0.0; cumsum(len)], ScaleFac*gravFy[nodes_trY], label="Deformation due to gravity",  linewidth = 1.75, linecolor = :indianred4)
    #p=plot!([0.0; cumsum(len)], ScaleFac*gravFy[nodes_trY], marker = ([:circle :d], 2, 0.4, Plots.stroke(2, :gray)), legend=:false)
+   annotate!(0.15, 0.3, text(string("Gravity response"), :black, :left, 10))
 
    s = Sym("s")  
    for ii=1:N

@@ -12,26 +12,20 @@ function Flywheel_modes(RotorSpreadsheet,AA,modeno)
 
   d=(abs.(imag(dDynMa)))
   dind=sortperm(abs.(imag(dDynMa)))
-
   for ii=1:N+1
    nodes_trX[ii]=2*(ii-1)+1
    nodes_trY[ii]=2*(ii-1)+1+2*(N+1)
   end
-
-  println(string("Eigenvalue No:",modeno,", at: ",round(d[dind[4]],digits=2),"rad/s"))
+ 
+  println(string("Eigenvalue No:",modeno,", at:",round(d[dind[modeno]],digits=2),"rad/s"))
+  annotate!(0.15, 0.3, text(string("Normal mode #",modeno,", at: ",round(d[dind[modeno]],digits=2),"rad/s"), :black, :left, 10))
   mode_sel=vDynMa[:,dind[modeno]]
+
   p=0
   #plot()
   ScaleFacRe=maximum(DiscRad)/maximum(abs.(real.(mode_sel[nodes_trY])))
   ScaleFacIm=maximum(DiscRad)/maximum(abs.(imag.(mode_sel[nodes_trY])))
   
-  #ScaleFac=1.0
-  #ScaledModRe=ScaleFacRe*real.(mode_sel[nodes_trY])
-  #ScaledModIm=ScaleFacRe*imag.(mode_sel[nodes_trY])
-  #p=plot!([0.0; cumsum(len)], ScaledModRe, label="Normal modal, real part",       linewidth = 1.75)
-  #p=plot!([0.0; cumsum(len)], ScaledModIm, label="Normal modal, imaginary part",       linewidth = 1.75)
-  
-
   s = Sym("s")  
   for ii=1:N
    l=len[ii]
@@ -51,7 +45,7 @@ function Flywheel_modes(RotorSpreadsheet,AA,modeno)
    end
    deltaN=l/20.0
    stations=collect(stL:deltaN:stR-deltaN)
-   p=plot!(stations,ScaleFacRe*BeamLine,  linewidth = 1.75, linecolor = :indianred4, legend=:false)
+   p=plot!(stations,ScaleFacRe*BeamLine,  linewidth = 1.75, linecolor = :indianred2, legend=:false)
   end 
   
   return p
