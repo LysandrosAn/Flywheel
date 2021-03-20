@@ -1,7 +1,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4625162.svg)](https://doi.org/10.5281/zenodo.4625162)
 
 # Flywheel
-Finite element method (FEM) formulation of rotating equipment in <em>Julia</em> language, featuring structural dynamics with 1-D  Euler-Bernoulli beam shaft segments, gyroscoping coupling and linear bearing impedance.\
+Finite element method (FEM) formulation of rotating equipment in <em>Julia</em> language, featuring lateral dynamics with 1-D  Euler-Bernoulli beam shaft segments, gyroscoping coupling and linear bearing impedance.\
 <img src= "pictures/Rotor.PNG"  width="600">
 
 ## Features:
