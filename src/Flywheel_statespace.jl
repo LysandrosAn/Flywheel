@@ -1,4 +1,5 @@
 # ======================== Create state space system  ======================== #
+# Author: Lysandros Anastasopoulos
 function Flywheel_statespace(M,G,D,K,Omega)
   t1=println("Creating state-space dynamic matrix...")
 

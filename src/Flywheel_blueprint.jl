@@ -1,4 +1,5 @@
 # ======================== Plot blueprint ======================== #
+# Author: Lysandros Anastasopoulos
 function Flywheel_blueprint(RotorSpreadsheet)
   t1=println("Generating blueprint of system...")
   N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,adro,adri,adle,adrho,adma,adjp,adjt,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)

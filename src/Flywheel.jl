@@ -1,4 +1,5 @@
 # ======================== 1-D Finite Element Rotating Machinery Code ======================== #
+# Author: Lysandros Anastasopoulos
 module Flywheel
  export Flywheel_blueprint, Flywheel_fematrices, Flywheel_statespace, Flywheel_gravity, Flywheel_waterfall, Flywheel_modes
  using LinearAlgebra

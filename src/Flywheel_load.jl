@@ -1,4 +1,5 @@
 # ======================== Load rotor file ======================== #
+# Author: Lysandros Anastasopoulos
 function Flywheel_load(RotorSpreadsheet)
    ImportFile=readdlm(string(RotorSpreadsheet,".txt"), '\t', Float64, '\n', header=true)
    ImportHeaders=ImportFile[2];

@@ -1,4 +1,5 @@
 # ======================== Visualize vibration modes  ======================== #
+# Author: Lysandros Anastasopoulos
 function Flywheel_modes(RotorSpreadsheet,AA,modeno)
   t1=println("Showing vibration mode...")
   N,NN,NNN,len,ro,ri,rho,E,nu,It,A,mu,jp,jt,PosNN,BearX,BearY,PosNNN,adro,adri,adle,adrho,adma,adjp,adjt,DiscThick,DiscRad =Flywheel_load(RotorSpreadsheet)

@@ -1,5 +1,5 @@
-# ======================== Calculate gravity force  ======================== #
-
+# ======================== Calculate gravity response ======================== #
+# Author: Lysandros Anastasopoulos
 function Flywheel_gravity(RotorSpreadsheet, gi,K)
   t1=println("Calculating gravity force vector...")
 
@@ -58,4 +58,4 @@ function Flywheel_gravity(RotorSpreadsheet, gi,K)
 
    return p
 
- end    # Flywheel_gravity()
+end    # Flywheel_gravity()

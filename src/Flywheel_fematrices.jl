@@ -1,5 +1,5 @@
 # ======================== Create finite element matrices  ======================== #
-
+# Author: Lysandros Anastasopoulos
 function Flywheel_fematrices(RotorSpreadsheet)
   t1=println("Generating element shape functions...")
  
@@ -121,4 +121,4 @@ function Flywheel_fematrices(RotorSpreadsheet)
    M,G,D,K=Flywheel_rearrange(M,G,D,K,N)
    
    return M,G,D,K
- end    # Flywheel_fematrices()
+end    # Flywheel_fematrices()

@@ -1,4 +1,5 @@
 # ======================== Create matrices  ======================== #
+# Author: Lysandros Anastasopoulos
 function Flywheel_discrete(RotorSpreadsheet)
   t1=println("Creating finite element method matrices...")
 

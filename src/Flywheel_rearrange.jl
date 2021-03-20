@@ -1,4 +1,5 @@
-# ======================== Create matrices  ======================== #
+# ======================== Rearrange matrices  ======================== #
+# Author: Lysandros Anastasopoulos
 function Flywheel_rearrange(M,G,D,K,N)
   t1=println("Rearranging elements...")
 

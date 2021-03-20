@@ -1,4 +1,5 @@
-# ======================== Create Campbell diagram  ======================== #
+# ======================== Create Waterfall diagram  ======================== #
+# Author: Lysandros Anastasopoulos
 function Flywheel_waterfall(M,G,D,K,OmStart,OmEnd)
   t1=println("Generating Campbell diagram...")
   N=Int64(size(M)[1]/4-1)
