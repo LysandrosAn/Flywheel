@@ -28,7 +28,7 @@ Finite element method (FEM) formulation of rotating equipment in Julia language,
 * *Dynamics of Rotating Systems*" by G. Genta (ISBN 978-0-387-28687-7)
 
 ## License
-Eclipse Public License 2.0
+GPL
 
 ## Author
 Lysandros Anastasopoulos
