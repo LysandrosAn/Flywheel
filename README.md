@@ -17,7 +17,7 @@ Finite element method (FEM) formulation of rotating equipment in <em>Julia</em> 
 
 
 ## Usage
-* Edit the blueprint file, cf. headers for the meaning of each column
+* Edit the blueprint file "Rotor_Sample.txt", cf. headers file "Rotor_Sample_Entries.txt" for the meaning of each column
 * `Flywheel_blueprint("Rotor_Sample")` shows a machine overview, bearings are depicted as triangles, solid discs as grey elements
 * `M,G,D,K=Flywheel_fematrices("Rotor_Sample")` returns the finite element matrices based on your rotor dynamic system
 * `A,B=Flywheel_statespace(M,G,D,K,800)` generates the state matrix A and input matrix B in the state-space domain, at a rotational speed of 800rev/min
