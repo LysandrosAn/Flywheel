@@ -1,0 +1,13 @@
+Station: Numbering of element [-]
+Length: Beam element length [m]
+OutRadius: Beam outer radius [m]
+InRadius: Beam outer radius [m]
+Density: Material density [kg/m^3]
+Young: Young modulus [GPa]
+Poisson: Poisson ratio [-]
+Bearing: Boolean, 1 if bearing present [-]
+XStiff: Bearing stiffness, horizontal direction [N/m]
+YStiff: Bearing stiffness, vertical direction [N/m]
+Disc: Boolean, 1 if disc present
+Thick: Disc thickness [m]
+OuterDia: Disc outer diameter [m]
