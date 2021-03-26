@@ -32,7 +32,7 @@ function Flywheel_gravity(RotorSpreadsheet, gi,K)
    #plot()
    #p=plot!([0.0; cumsum(len)], ScaleFac*gravFy[nodes_trY], label="Deformation due to gravity",  linewidth = 1.75, linecolor = :indianred4)
    #p=plot!([0.0; cumsum(len)], ScaleFac*gravFy[nodes_trY], marker = ([:circle :d], 2, 0.4, Plots.stroke(2, :gray)), legend=:false)
-   annotate!(0.15, 0.3, text(string("Gravity response"), :black, :left, 10))
+   annotate!(0.00, 0.3, text(string("Gravity response"), :black, :left, 10))
 
    s = Sym("s")  
    for ii=1:N
@@ -55,6 +55,7 @@ function Flywheel_gravity(RotorSpreadsheet, gi,K)
     stations=collect(stL:deltaN:stR-deltaN)
    p=plot!(stations,ScaleFac*BeamLine,  linewidth = 1.75, linecolor = :indianred4, legend=:false)
    end 
+   annotate!(sum(len)/2, -0.3, text(string("Maximum deformation: ",round(maximum(abs.(gravFy[nodes_trY]))*1e3,digits=3),"mm"), :black, :left, 10))
 
    return p
 
