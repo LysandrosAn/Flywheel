@@ -26,7 +26,7 @@ Edit the blueprint file "Rotor_Sample.txt", cf. headers file "Rotor_Sample_Entri
  <img src= "pictures/Campbell.PNG"  width="400">\
 `A,B=Flywheel_statespace(M,G,D,K,800)` generates the state matrix A and input matrix B in the state-space domain, at a rotational speed of 800rev/min\
 `Flywheel_modes("Rotor_Sample",A,9)` illustrates the 9th lowest natural bending mode\
- <img src= "pictures/Modes.PNG"  width="400">\
+ <img src= "pictures/Modes.PNG"  width="400">
 
 
 
