@@ -10,12 +10,6 @@ Finite element method (FEM) formulation of rotating equipment in <em>Julia</em> 
 * Estimation of resonance frequencies and deformation due to gravity
 * Run-up time-transient numerical simulation
 
-## Installation
-* Fetch the code locally, place it into your directory
-* In Julia, run as: `(v1.5) pkg> add "C:\Users\myusername\.julia\dev\Flywheel"`
-* Then add the package with `using Flywheel` and place the "Rotor_Sample.txt" blueprint in your current Julia directory
-
-
 ## Usage
 Edit the blueprint file "Rotor_Sample.txt", cf. headers file "Rotor_Sample_Entries.txt" for the meaning of each column\
 `Flywheel_blueprint("Rotor_Sample")` shows a machine overview, bearings are depicted as triangles, solid discs as grey elements\
@@ -27,6 +21,12 @@ Edit the blueprint file "Rotor_Sample.txt", cf. headers file "Rotor_Sample_Entri
 `A,B=Flywheel_statespace(M,G,D,K,800)` generates the state matrix A and input matrix B in the state-space domain, at a rotational speed of 800rev/min\
 `Flywheel_modes("Rotor_Sample",A,9)` illustrates the 9th lowest natural bending mode\
  <img src= "pictures/Modes.PNG"  width="400">
+
+
+## Installation
+* Fetch the code locally, place it into your directory
+* In Julia, run as: `(v1.5) pkg> add "C:\Users\myusername\.julia\dev\Flywheel"`
+* Then add the package with `using Flywheel` and place the "Rotor_Sample.txt" blueprint in your current Julia directory
 
 
 
