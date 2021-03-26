@@ -26,6 +26,9 @@ Finite element method (FEM) formulation of rotating equipment in <em>Julia</em> 
 <img src= "pictures/Gravity.PNG"  width="400">
 * `Flywheel_waterfall(M,G,D,K,1000,500,10000)` creates a  waterfall diagram of eigenfrequencies between the rotational speeds 1000 and 10000 rev/min, in 500-steps
 <img src= "pictures/Campbell.PNG"  width="400">
+* `Flywheel_modes("Rotor_Sample",A,9)` illustrates the natuarl bending mode number 9
+<img src= "pictures/Modes.PNG"  width="400">
+
 
 
 ## References
