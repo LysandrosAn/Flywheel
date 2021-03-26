@@ -19,7 +19,7 @@ function Flywheel_modes(RotorSpreadsheet,AA,modeno)
   end
  
   println(string("Eigenvalue No:",modeno,", at:",round(d[dind[modeno]],digits=2),"rad/s"))
-  annotate!(0.15, 0.3, text(string("Normal mode #",modeno,", at: ",round(d[dind[modeno]],digits=2),"rad/s"), :black, :left, 10))
+  annotate!(0.0, 0.3, text(string("Normal mode #",modeno,", at: ",round(d[dind[modeno]],digits=2),"rad/s"), :black, :left, 10))
   mode_sel=vDynMa[:,dind[modeno]]
 
   p=0
@@ -46,7 +46,8 @@ function Flywheel_modes(RotorSpreadsheet,AA,modeno)
    end
    deltaN=l/20.0
    stations=collect(stL:deltaN:stR-deltaN)
-   p=plot!(stations,ScaleFacRe*BeamLine,  linewidth = 1.75, linecolor = :indianred2, legend=:false)
+   p=plot!(stations,+ScaleFacRe*BeamLine,  linewidth = 1.75, linecolor = :indianred4, legend=:false)
+   p=plot!(stations,-ScaleFacRe*BeamLine,  linewidth = 1.75, linecolor = :indianred4, legend=:false)
   end 
   
   return p
