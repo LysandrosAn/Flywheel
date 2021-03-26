@@ -24,8 +24,8 @@ Finite element method (FEM) formulation of rotating equipment in <em>Julia</em> 
 <img src= "pictures/Gravity.PNG"  width="400">
 * `Flywheel_waterfall(M,G,D,K,1000,500,10000)` creates a  waterfall diagram of eigenfrequencies between the rotational speeds 1000 and 10000 rev/min, in 500-steps
 <img src= "pictures/Campbell.PNG"  width="400">
-* `A,B=Flywheel_statespace(M,G,D,K,800)` generates the state matrix A and input matrix B in the state-space domain, at a rotational speed of 800rev/min
-* `sort(abs.(imag(eigvals(A)*60/2/pi)))` lists the resonance frequencies of the Jacobian (state matrix A) in rev/min at the above selected rotational speed
+* `A,B=Flywheel_statespace(M,G,D,K,800)` generates the state matrix A and input matrix B in the state-space domain, at a rotational speed of 800rev/min\
+* `sort(abs.(imag(eigvals(A)*60/2/pi)))` lists the resonance frequencies of the Jacobian (state matrix A) in rev/min at the above selected rotational speed\
 * `Flywheel_modes("Rotor_Sample",A,9)` illustrates the 9th lowest natural bending mode
 <img src= "pictures/Modes.PNG"  width="400">
 
