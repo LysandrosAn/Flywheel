@@ -24,6 +24,8 @@ Finite element method (FEM) formulation of rotating equipment in <em>Julia</em> 
 * `sort(abs.(imag(eigvals(A)*60/2/pi)))` lists the resonance frequencies of the Jacobian (state matrix A) in rev/min at the above selected rotational speed
 * `GravForce=Flywheel_gravity("Rotor_Sample",9.806,K)` depicts the static deformation due to  gravitational acceleration of 9.806m/s^2
 * `Flywheel_waterfall(M,G,D,K,1000,4000)` creates a  waterfall diagram of eigenfrequencies between the rotational speeds 1000 and 4000 rev/min
+* <img src= "pictures/Campbell.PNG"  width="400">
+
 
 ## References
 * *Linear and Nonlinear Rotordynamics: A Modern Treatment with Applications, Second Edition* by Y. Ishida and T. Yamamoto (ISBN 978-3-527-40942-6)
