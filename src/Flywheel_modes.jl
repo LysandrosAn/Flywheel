@@ -1,4 +1,4 @@
-# ======================== Visualize vibration modes  ======================== #
+[# ======================== Visualize vibration modes  ======================== #
 # Author: Lysandros Anastasopoulos
 function Flywheel_modes(RotorSpreadsheet,AA,modeno)
   t1=println("Showing vibration mode...")
