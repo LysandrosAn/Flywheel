@@ -13,17 +13,17 @@ Finite element method (FEM) formulation of rotating equipment in <em>Julia</em> 
 ## Usage
 Edit the blueprint file "Rotor_Sample.txt", cf. headers file "Rotor_Sample_Entries.txt" for the meaning of each column\
 `Flywheel_blueprint("Rotor_Sample")` shows a machine overview, bearings are depicted as triangles, solid discs as grey elements\
-`M,G,D,K=Flywheel_fematrices("Rotor_Sample")` returns the finite element matrices based on your rotor dynamic system\
+`M,G,D,K=Flywheel_fematrices("Rotor_Sample")` returns the finite element matrices based on your rotor dynamic system:\
  <img src= "pictures/Matrix_K.PNG"  width="300">
  <img src= "pictures/Matrix_G.PNG"  width="300">
  <img src= "pictures/Matrix_M.PNG"  width="300">\
 
-`GravForce=Flywheel_gravity("Rotor_Sample",9.806,K)` depicts the static deformation due to  gravitational acceleration of 9.806m/s^2\
+`GravForce=Flywheel_gravity("Rotor_Sample",9.806,K)` depicts the static deformation due to  gravitational acceleration of 9.806m/s^2:\
  <img src= "pictures/Gravity.PNG"  width="500">\
-`Flywheel_waterfall(M,G,D,K,1000,500,10000)` creates a  waterfall diagram of eigenfrequencies between the rotational speeds 1000 and 10000 rev/min, in 500-steps\
+`Flywheel_waterfall(M,G,D,K,1000,500,10000)` creates a  waterfall diagram of eigenfrequencies between the rotational speeds 1000 and 10000 rev/min, in 500-steps:\
  <img src= "pictures/Campbell.PNG"  width="500">\
-`A,B=Flywheel_statespace(M,G,D,K,800)` generates the state matrix A and input matrix B in the state-space domain, at a rotational speed of 800rev/min\
-`Flywheel_modes("Rotor_Sample",A,9)` illustrates the 9th lowest natural bending mode\
+`A,B=Flywheel_statespace(M,G,D,K,800)` generates the state matrix A and input matrix B in the state-space domain, at a rotational speed of 800rev/min:\
+`Flywheel_modes("Rotor_Sample",A,9)` illustrates the 9th lowest natural bending mode:\
  <img src= "pictures/Modes.PNG"  width="500">
 
 
