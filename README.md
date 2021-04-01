@@ -8,7 +8,7 @@ Finite element method (FEM) formulation of rotating equipment in <em>Julia</em> 
 * Importing of custom machinery geometry from file
 * Calculation of inertia, gyroscopy, damping & stiffness matrices
 * Estimation of resonance frequencies and deformation due to gravity
-* Run-up time-transient numerical simulation
+* Time-transient numerical simulation with stiff ODE solvers
 
 ## Usage
 Edit the blueprint file "Rotor_Sample.txt", cf. headers file "Rotor_Sample_Entries.txt" for the meaning of each column\
