@@ -28,9 +28,9 @@ Hint: `Flywheel_blueprint("Rotor_Sample")` shows a machine overview, bearings ar
 
 
 ## Installation
-* Fetch the code locally, place it into your directory
-* In Julia, run as: `(v1.5) pkg> add "C:\Users\myusername\.julia\dev\Flywheel"`
-* Then add the package with `using Flywheel` and place the "Rotor_Sample.txt" blueprint in your current Julia directory
+* Fetch the code from github locally, place it into your directory.
+* In Julia, run as: `(v1.5) pkg> add "C:\Users\myusername\.julia\dev\Flywheel"`.
+* Then add the package with `using Flywheel` and place the "Rotor_Sample.txt" blueprint in your current Julia directory.
 
 
 
